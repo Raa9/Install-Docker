@@ -22,7 +22,7 @@ Before installing Docker, ensure your system meets the following prerequisites:
 
 Ensure your system has an active internet connection and sufficient permissions to install software.
 
-## Installing Docker on yum-based OS
+# Installing Docker on yum-based OS
 
 ### Update your system:
 ```bash
@@ -61,7 +61,7 @@ sudo chmod 777 /var/run/docker.sock
 ```
 
 
-## Installing Docker on apt-based OS
+# Installing Docker on apt-based OS
 
 
 Follow these steps to install Docker on apt-based Linux distributions like Ubuntu and Debian:
@@ -97,7 +97,7 @@ This command sets the Docker socket to be readable and writable by all users. No
 sudo chmod 777 /var/run/docker.sock
 ```
 
-## Installing Docker on Windows
+# Installing Docker on Windows
 
 ### Download Docker Desktop:
 
