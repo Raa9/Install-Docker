@@ -24,7 +24,7 @@ Ensure your system has an active internet connection and sufficient permissions 
 
 ## Installing Docker on yum-based OS
 
-Update your system:
+### Update your system:
 ```bash
 sudo yum update -y
 ```
@@ -61,3 +61,37 @@ sudo chmod 777 /var/run/docker.sock
 ```
 
 
+## Installing Docker on apt-based OS
+
+
+Follow these steps to install Docker on apt-based Linux distributions like Ubuntu and Debian:
+
+Update your system:
+```bash
+sudo apt-get update
+```
+
+Install Docker:
+```bash
+sudo apt-get install docker.io -y
+```
+
+Add your user to the Docker group:
+
+This allows your user to run Docker commands without using sudo.
+```bash
+sudo usermod -aG docker $USER
+```
+
+Activate the Docker group:
+
+Run the following command to apply the new group membership immediately:
+```bash
+newgrp docker
+```
+
+Change permissions for the Docker socket:
+
+This command sets the Docker socket to be readable and writable by all users. Note: This step poses a security risk and is generally not recommended.
+```bash
+**rahul**
