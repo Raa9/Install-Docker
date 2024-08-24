@@ -11,7 +11,6 @@ Table of Contents
 - Installing Docker on Windows
 - Post-Installation Steps
 - Uninstall Docker
-- Prerequisites
 
 ### Prerequisites
 Before installing Docker, ensure your system meets the following prerequisites:
@@ -139,3 +138,126 @@ To confirm Docker is running properly, execute:
 docker run hello-world
 ```
 This command downloads a test image and runs it in a container. If everything is set up correctly, you should see a "Hello from Docker!" message.
+
+## uninstall Docker
+
+Stop Docker Service:
+
+First, stop the Docker service if it's running:
+```bash
+sudo systemctl stop docker
+```
+
+Uninstall Docker Packages:
+
+Remove Docker and its associated packages:
+```bash
+sudo yum remove -y docker \
+                   docker-client \
+                   docker-client-latest \
+                   docker-common \
+                   docker-latest \
+                   docker-latest-logrotate \
+                   docker-logrotate \
+                   docker-engine
+```
+
+Remove Docker Dependencies:
+
+You may also want to remove Docker dependencies and related packages:
+```bash
+sudo yum autoremove -y
+```
+
+Remove Docker Files and Directories:
+
+Clean up any residual Docker files and directories:
+```bash
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+```
+
+### Optional: Remove Docker Group
+
+If you created a Docker group and want to remove it:
+```bash
+sudo groupdel docker
+```
+
+Confirm Uninstallation
+```bash
+docker --version
+```
+
+# Uninstalling Docker on Ubuntu (Linux)
+
+Stop Docker Service:
+```bash
+sudo systemctl stop docker
+```
+
+Uninstall Docker Packages:
+```bash
+sudo apt-get purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+Remove Docker Dependencies:
+```bash
+sudo apt-get autoremove -y
+```
+
+Remove Docker Files and Directories:
+```bash
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+sudo rm -rf /etc/docker
+sudo rm -rf /var/run/docker.sock
+```
+
+Remove Docker Group (Optional):
+```bash
+sudo groupdel docker
+```
+
+Verify Uninstallation:
+```bash
+docker --version
+```
+
+# Uninstalling Docker on Windows
+
+Stop Docker Desktop:
+Ensure Docker Desktop is closed. Right-click the Docker Desktop icon in the system tray and select "Quit Docker Desktop."
+
+Uninstall Docker Desktop:
+- Open the Control Panel.
+- Navigate to Programs > Programs and Features.
+- Locate Docker Desktop in the list of installed programs, right-click on it, and select Uninstall.
+- Follow the prompts to complete the uninstallation process.
+
+Remove Docker Files (Optional):
+Docker Desktop on Windows stores configuration and other data in several locations. You can manually delete these files if you want to ensure a complete removal:
+ - Docker Desktop Configuration Files:
+   Delete the Docker configuration folder located in your user profile directory:
+   ```bash
+   C:\Users\<YourUsername>\AppData\Roaming\Docker
+   C:\Users\<YourUsername>\AppData\Local\Docker
+   C:\Users\<YourUsername>\.docker
+   ```
+ - Virtual Machine Files (if using WSL 2 backend):
+   Delete any WSL 2 distribution data from Docker. This may be stored in:
+   ```bash
+   C:\Users\<YourUsername>\AppData\Local\Docker\wsl
+   ```
+
+Remove Docker Context in WSL 2 (Optional):
+If you were using Docker with WSL 2 integration and want to clean up completely, you can remove Docker context:
+ - Open PowerShell as an administrator.
+ - Run the following command to remove the Docker context:
+   ```bash
+   wsl --unregister docker-desktop
+   wsl --unregister docker-desktop-data
+
+Verify Uninstallation:
+
+Restart your computer and confirm that Docker Desktop has been completely removed.
