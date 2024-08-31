@@ -102,17 +102,30 @@ sudo chmod 777 /var/run/docker.sock
 
 - Visit the Docker Desktop download page and download the installer for Windows.
 
-### Run the Docker Desktop Installer:
+### Enable wsl 
+step 1:
+ - click on start menu 
+ - search 'turn windows on or off' and open
+ - check the box of windows hypervisor platform and windows subsystem for linux
+ - click ok 
+ - restart the system 
+step 2:
+- open cmd as administrator 
+- run the command and check the wsl 
+  '''bash
+  wsl --status
+  '''
+- update the wsl
+  '''bash
+  wsl --update
+  '''
 
-- Double-click the installer to run it. Follow the on-screen instructions to complete the installation.
-
-### Enable WSL 2 (Windows Subsystem for Linux):
-
-- Docker Desktop requires WSL 2 as the backend. The installer will prompt you to enable it if it is not already enabled.
+### install the docker desktop 
+- once it is installed restart the system 
 
 ### Start Docker Desktop:
 
-- Once installed, start Docker Desktop from the Start menu or desktop shortcut.
+- start Docker Desktop from the Start menu or desktop shortcut.
 
 ### Verify Docker Installation:
 
